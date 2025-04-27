@@ -9,7 +9,7 @@
         >
           x
         </button>
-        <h2 class="accent-color">Badminto Basic Rules</h2>
+        <h2 class="accent-color">Badminton Match Basic Rules</h2>
 
         <ul>
           <li>A match consists of the best of three games of 21 points.</li>
@@ -64,8 +64,8 @@
 
 .btn-close-modal {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1rem;
+  right: 1rem;
   width: 40px;
   height: 40px;
   font-size: 1.5rem;

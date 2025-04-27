@@ -176,7 +176,6 @@ function setInitiation(e, half, index) {
     leftHalfPlayers.value.forEach((player) => {
       player.initiation = null;
     });
-
     leftHalfPlayers.value[index].initiation = e.target.value;
   } else if (half === 'right') {
     rightHalfPlayers.value.forEach((player) => {

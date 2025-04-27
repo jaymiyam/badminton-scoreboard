@@ -42,6 +42,7 @@ function handleResetGame() {
   background-color: white;
 }
 .btn-main-controls {
+  color: white;
   padding-block: 0.75rem;
   border-radius: 100px;
   line-height: 1.5;

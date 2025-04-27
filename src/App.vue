@@ -48,7 +48,6 @@ import NewGameSingles from './components/NewGameSingles.vue';
 import NewGameDoubles from './components/NewGameDoubles.vue';
 import MainControls from './components/MainControls.vue';
 import RulesModal from './components/RulesModal.vue';
-import ScoreChart from './components/ScoreChart.vue';
 
 // states
 const gameMode = ref('doubles');
@@ -175,29 +174,26 @@ function handleChangeScore(payload) {
 function switchPlayersPositionSingles() {
   if (serviceHalf.value === prevServiceHalf.value) {
     players.value.forEach((player) => (player.isLeftSide = !player.isLeftSide));
-  } else if (
-    serviceHalf.value != prevServiceHalf.value &&
-    serviceIndicator.value != prevServiceIndicator.value
-  ) {
+  } else if (serviceIndicator.value != prevServiceIndicator.value) {
     players.value.forEach((player) => (player.isLeftSide = !player.isLeftSide));
+  } else {
+    return;
   }
 }
 
 function switchPlayersPositionDoubles() {
-  if (
-    serviceHalf.value === 'left' &&
-    serviceHalf.value === prevServiceHalf.value
-  ) {
-    players.value
-      .filter((player) => player.isLeftHalf)
-      .forEach((player) => (player.isLeftSide = !player.isLeftSide));
-  } else if (
-    serviceHalf.value === 'right' &&
-    serviceHalf.value === prevServiceHalf.value
-  ) {
-    players.value
-      .filter((player) => !player.isLeftHalf)
-      .forEach((player) => (player.isLeftSide = !player.isLeftSide));
+  if (!prevServiceHalf.value || serviceHalf.value === prevServiceHalf.value) {
+    if (serviceHalf.value === 'left') {
+      players.value
+        .filter((player) => player.isLeftHalf)
+        .forEach((player) => (player.isLeftSide = !player.isLeftSide));
+    } else if (serviceHalf.value === 'right') {
+      players.value
+        .filter((player) => !player.isLeftHalf)
+        .forEach((player) => (player.isLeftSide = !player.isLeftSide));
+    }
+  } else {
+    return;
   }
 }
 
